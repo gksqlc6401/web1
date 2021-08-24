@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .bg{
+        background-color: aquamarine;
+    }
+    .bgred {
+        background-color: red;
+        height: 50vh;
+    }
+
+</style>
+
+<button id="btn">CLICK</button>
+
+<div id="target" class="bg">
+    <h1>HELLO</h1>
+</div>
+
+<script>
+    var btn = document.querySelector("#btn") //#은 무언가를 찾을때
+    var target = document.querySelector("#target")
+
+    btn.addEventListener("click",function (e){
+        console.log("btn click")
+        console.log(e)
+        target.setAttribute("class", "bgred") //콜백함수 클릭이 되면 이거를 해주세요 하나의 파라미터를 기본적으로 하나를 받을 수 있음 이름)evnet
+    },false);
+
+</script>
+
+</body>
+</html>
