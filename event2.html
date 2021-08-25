@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div class="d1">
+  <div class="d2">
+    <div class="d3">
+      <a href="/test1.html" class="sample">TEST1</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .d3 {
+    margin: 50px;
+    background-color: green;
+  }
+
+  .d2 {
+    margin: 50px;
+    background-color: deeppink;
+    height: 20vh;
+    text-align: center;
+    align-items: center;
+  }
+
+  .d1 {
+    margin: 50px;
+    background-color: yellow;
+    height: 40vh;
+  }
+</style>
+
+<script>
+
+  document.querySelector(".sample").addEventListener("click", (e) => {
+    e.preventDefault()
+  }, false)
+
+  document.querySelector(".d3").addEventListener("click", (e) => console.log("d3"), false) //캡처링 금지
+  document.querySelector(".d2").addEventListener("click", (e) => {
+    e.stopPropagation() //d2에서 캡쳐링 멈춤
+    console.log("d2")
+  }, false)
+  document.querySelector(".d1").addEventListener("click", (e) => console.log("d1"), false)
+
+</script>
+
+</body>
+</html>

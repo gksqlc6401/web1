@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <ul class="items">
+        <li>
+            <div>
+                <span class="menu">빅맥</span>
+                <span class="price">5000</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">상하이버거</span>
+                <span class="price">6000</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">불고기버거</span>
+                <span class="price">3500</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">치즈버거</span>
+                <span class="price">3000</span>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul class="cart">
+
+    </ul>
+</div>
+
+<div>
+    <h2 id="total"></h2>
+</div>
+
+<script>
+
+    // document.querySelector(".items")
+    // .addEventListener("click", function (e) {
+    //   console.log(this)
+    // }, false)
+
+    var cart = document.querySelector(".cart")
+    var arr = document.querySelectorAll(".items li")
+    var total = document.querySelector("#total") //실행하기 전에 DOM에 있는지가 중요
+
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].addEventListener("click", function (e) {//이벤트 주는거(클릭으로)
+
+            console.log(e)
+            var targetLi = this//this는 윈도우를 가리킨다
+            var menu = targetLi.querySelector(".menu").innerHTML
+            var price = targetLi.querySelector(".price").innerHTML
+
+            console.log(menu, price)
+
+            var str = "<li><span class='tmenu'>" + menu + "</span><span class='tprice'>" + price + "</span><button>X</button></li>"
+
+            cart.innerHTML += str
+
+            makeTotal()
+
+        }, false)//캡쳐를 막는다.
+    }
+
+    //버튼눌러서 삭제
+
+    cart.addEventListener("click", function (e) {
+
+        console.log(e.target)
+
+        //만일 e.target이 버튼이였다면
+        if (e.target.matches('button')) {
+
+            //버튼을 가지고있는 <li> 태그를 찾고
+            var targetLi = e.target.parentElement//li의 부모를 찾아서 targetLi에 값을 넣어준다
+            console.log(targetLi)
+
+            //해당 <li> 삭제
+            cart.removeChild(targetLi)//카트에서 찾은 태그의 자식을 지워준다.
+
+            makeTotal()
+        }
+    }, false)
+
+    //가격 합계 계산하기
+
+    function makeTotal() {
+
+        console.log("------makeTotal")
+
+        var priceSpans = document.querySelectorAll(".tprice")
+
+        var sum = 0;
+        for(var i = 0; i < priceSpans.length; i++) {
+            sum += parseInt(priceSpans[i].innerHTML)
+        }
+
+         total.innerHTML = sum
+
+    }
+
+</script>
+
+</body>
+</html>
