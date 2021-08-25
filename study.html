@@ -5,34 +5,34 @@
     <title>Title</title>
 </head>
 <body>
-    <div>
-        <ul class="md">
-            <li>
-                <div>
-                    <span class="menu">빅맥</span>
-                    <span class="price">5000</span>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <span class="menu">슈비</span>
-                    <span class="price">7000</span>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <span class="menu">빅맥</span>
-                    <span class="price">8000</span>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <span class="menu">빅맥</span>
-                    <span class="price">6000</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+<div>
+    <ul class="md">
+        <li>
+            <div>
+                <span class="menu">빅맥</span>
+                <span class="price">5000</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">슈비</span>
+                <span class="price">7000</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">불고기</span>
+                <span class="price">8000</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="menu">새우버거</span>
+                <span class="price">6000</span>
+            </div>
+        </li>
+    </ul>
+</div>
 <div>
     <ul class="cart"></ul>
 </div>
@@ -46,14 +46,21 @@
     var cart = document.querySelector(".cart")
     var total = document.querySelector("total")
 
-    for (var i = 0; i>arr.length; i++) {
+    for (var i = 0; i > arr.length; i++) {
         arr[i].addEventListener("click", function (e) {
 
             console.log(e)
             var targetLi = this//윈도우로 들어간다
-            var menu = document.
+            var menu = targetLi.querySelector('.menu').innerHTML
+            var price = targetLi.querySelector('.price').innerHTML
 
-        },false)
+            console.log(menu, price)
+
+            var str = "<li><span class='cmenu'>" + menu + "</span><span class='cprice'>" + price + "</span><button>X</button></li>"
+
+            cart.innerHTML += str
+
+        }, false)
     }
 
 </script>

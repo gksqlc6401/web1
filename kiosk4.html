@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="menus">
+
+</div>
+<div>
+    <ul class="cart">
+
+    </ul>
+    <h3 class="total">Total</h3>
+
+</div>
+
+<script>
+
+    const menus = [
+        {menu: '빅맥',price: 5000},
+        {menu: '상하이버거',price: 5500},
+        {menu: '불고기버거',price: 4000},
+        {menu: '더블치즈버거',price: 6000},
+    ]
+
+    const cart = []
+
+    const menusDiv = document.querySelector('.menus')
+    const cartDiv = document.querySelector('cart')
+
+    let str = ""
+
+    for (let i = 0; i < menus.length; i++) {
+
+        const menu = menus[i].menu
+        const price = menus[i].price
+
+        str +=`<li data-idx="${i}" data-menu="${menu}" data-price="${price}">${menu}<span>${price}</span></li>`
+    }
+    menusDiv.innerHTML = str
+
+    //이벤트 처리
+    document.querySelector(".menus").addEventListener("click", function (e){
+        const targetLi = e.target;
+        //console.log(targetLi)
+
+        const idx = targetLi.getAttribute("data-idx")
+
+        if(idx) {
+            console.log(idx)
+            refreshCart(menus[idx])//값을 더해줌
+            console.log(cart)//check cart
+        }
+    },false)
+    function refreshCart(menu) {
+
+        if(menu) {
+            cart.push(menu)//파라미터가 존재한다면 푸시하고
+        }
+
+        //cart ul 갱신
+        let str = ""
+        for (let i = 0; i < cart.length; i++) {
+            const menu = cart[i].name
+            const price = cart[i].price
+            str += `<li>${menu} - ${price}<button data-idx="${i}">X</button></li>`
+        }
+            cartDiv.innerHTML = str
+
+    }
+
+        cartDiv.addEventListener("click", function (e){
+            if(target.matches("button")) {
+                const idx = target.getAttribute("data-idx")
+                console.log(idx)
+
+                cart.slice(idx,1)
+
+                refreshCart()//파라미터 없이 (파라미터가 없어도 호출할수있음)
+            }
+        },false)
+
+    //total 만들기
+
+</script>
+
+</body>
+</html>
