@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">CLICK</button>
+
+<script>
+
+  document.querySelector("#btn").addEventListener("click", function () {
+
+      //다 되면 then-이거 동작 해줘. (언제될진 모름)
+      fetch("https://swapi.dev/api/people/1").then(res => {
+          //json 데이터 가져오는데 성공하면 then 실행
+          res.json().then(data => {
+              console.log(data)
+          })
+      })
+
+  }, false) //서버에서 데이터 가져올 수 있음
+
+
+</script>
+
+</body>
+</html>
